@@ -1,0 +1,22 @@
+<div>
+    <h2>{{isEdit ? "Edit User" : "Create USer"}}</h2>
+
+    <label>Name</label>
+    <input type="text" [(ngModel)] = "user.name">
+    <label>Email</label>
+    <input type="text" [(ngModel)] = "user.email">
+    <label>Phone</label>
+    <input type="text" [(ngModel)] = "user.phone">
+    <label>Age</label>
+    <input type="text" [(ngModel)] = "user.age">
+    <label>Tech Stack</label>
+    <input type="text" [(ngModel)] = "user.techStack">
+
+    <br><br>
+
+    <button (click)="saveUser()">
+        {{isEdit ? "Update" : "Create"}}
+    </button>
+
+    <button (click)="navigateHome()">Cancel</button>
+</div>

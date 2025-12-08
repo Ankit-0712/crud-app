@@ -1,0 +1,86 @@
+div {
+  width: 90%;
+  max-width: 900px;
+  margin: 30px auto;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+
+  h2 {
+    margin-bottom: 15px;
+    font-size: 22px;
+    font-weight: 600;
+    color: #333;
+  }
+
+  > button {
+    background: #4c72ff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: 0.2s ease;
+
+    &:hover {
+      background: #3a5fe0;
+    }
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+
+    th {
+      background: #f4f6fa;
+      padding: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: left;
+      border-bottom: 2px solid #e0e0e0;
+    }
+
+    td {
+      padding: 12px;
+      font-size: 14px;
+      color: #333;
+      border-bottom: 1px solid #eee;
+    }
+
+    tr:hover {
+      background: #f9fbff;
+    }
+
+    button {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      margin-right: 8px;
+      transition: 0.2s ease;
+
+      &:first-of-type {
+        background: #4c72ff;
+        color: white;
+
+        &:hover {
+          background: #375ad8;
+        }
+      }
+
+      &:last-of-type {
+        background: #ff5c5c;
+        color: white;
+
+        &:hover {
+          background: #e04b4b;
+        }
+      }
+    }
+  }
+}

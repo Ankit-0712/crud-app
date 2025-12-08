@@ -42,8 +42,7 @@ deleteUser(user: User) {
   }
   this.userService.deleteUser(user.id).subscribe(
     res => {
-      console.log(res); // "User deleted successfully"
-      // Remove deleted user from local array
+      console.log(res); 
       this.users = this.users.filter(u => u.id !== user.id);
     },
     err => console.error(err)

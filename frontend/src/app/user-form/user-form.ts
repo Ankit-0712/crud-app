@@ -35,7 +35,7 @@ throw new Error('Method not implemented.');
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id');
-      this.resetUser(); // reset before loading
+      this.resetUser(); 
 
       if (this.id) {
         this.isEdit = true;

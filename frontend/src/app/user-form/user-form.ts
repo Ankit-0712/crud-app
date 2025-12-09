@@ -1,19 +1,17 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { User } from '../Model/user';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.html',
   styleUrls: ['./user-form.scss'],
-  imports: [FormsModule]
+  imports: [FormsModule, NgIf]
 })
 export class UserForm implements OnInit {
-navigateHome() {
-throw new Error('Method not implemented.');
-}
   id: any;
   isEdit = false;
 
@@ -63,7 +61,12 @@ throw new Error('Method not implemented.');
     };
   }
 
-  saveUser() {
+  saveUser(form: NgForm) {
+    if (!form.valid) {
+      alert('Please fill in all required fields correctly');
+      return;
+    }
+    
     if (this.isEdit) {
       this.userService.updateUser(this.id, this.user).subscribe(() => {
         this.router.navigate(['/']);
@@ -73,5 +76,9 @@ throw new Error('Method not implemented.');
         this.router.navigate(['/']);
       });
     }
+  }
+
+  navigateHome() {
+    this.router.navigate(['/']);
   }
 }

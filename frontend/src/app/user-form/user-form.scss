@@ -1,67 +1,113 @@
-div {
-  width: 350px;
+:host {
+  display: block;
+}
+
+.form-container {
+  max-width: 450px;
   margin: 30px auto;
-  padding: 20px;
+  padding: 25px;
   background: #ffffff;
-  border-radius: 14px;
+  border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 
   h2 {
     text-align: center;
     margin-bottom: 20px;
-    font-size: 20px;
     font-weight: 600;
     color: #333;
   }
 
-  label {
-    display: block;
-    margin: 8px 0 4px;
-    font-size: 14px;
-    color: #555;
-    font-weight: 500;
-  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
 
-  input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #d1d1d1;
-    border-radius: 8px;
-    outline: none;
-    font-size: 14px;
-    margin-bottom: 10px;
-    transition: border-color 0.2s ease;
+    .form-group {
+      display: flex;
+      flex-direction: column;
 
-    &:focus {
-      border-color: #4c72ff;
-      box-shadow: 0 0 0 2px rgba(76, 114, 255, 0.2);
-    }
-  }
+      label {
+        font-weight: 600;
+        margin-bottom: 5px;
+        color: #444;
+        font-size: 14px;
+      }
 
-  button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 8px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: 0.2s ease;
-    margin-right: 10px;
+      input {
+        width: 100%;
+        padding: 10px 12px;
+        font-size: 15px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        transition: 0.25s;
+        box-sizing: border-box;
 
-    &:first-of-type {
-      background: #4c72ff;
-      color: white;
+        &:focus {
+          border-color: #007bff;
+          box-shadow: 0 0 3px rgba(0, 123, 255, 0.4);
+          outline: none;
+        }
 
-      &:hover {
-        background: #3a5fe0;
+        &.ng-invalid.ng-touched {
+          border-color: #e74c3c;
+        }
+      }
+
+      small.error {
+        color: #e74c3c;
+        font-size: 12px;
+        margin-top: 4px;
+        display: block;
+
+        span {
+          display: block;
+          margin-bottom: 2px;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
       }
     }
 
-    &:last-of-type {
-      background: #e0e0e0;
-      color: #333;
+    .button-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
 
-      &:hover {
-        background: #c8c8c8;
+      button {
+        flex: 1;
+        padding: 10px 18px;
+        font-size: 16px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.3s ease;
+        font-weight: 600;
+
+        &:first-of-type {
+          background-color: #007bff;
+          color: white;
+
+          &:hover:not(:disabled) {
+            background-color: #0069d9;
+          }
+
+          &:disabled {
+            background-color: #8cbcf7;
+            cursor: not-allowed;
+            opacity: 0.7;
+          }
+        }
+
+        &:last-of-type {
+          background-color: #6c757d;
+          color: white;
+
+          &:hover {
+            background-color: #5a6268;
+          }
+        }
       }
     }
   }

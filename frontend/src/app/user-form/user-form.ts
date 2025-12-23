@@ -1,19 +1,21 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { User } from '../Model/user';
 import { NgIf } from '@angular/common';
 
+
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.html',
   styleUrls: ['./user-form.scss'],
-  imports: [FormsModule, NgIf]
+  imports: [FormsModule, NgIf, ReactiveFormsModule] 
 })
 export class UserForm implements OnInit {
   id: any;
   isEdit = false;
+
 
   user: User = {
     name: '',
@@ -27,8 +29,12 @@ export class UserForm implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private userService: UserService,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private fbb: FormBuilder
   ) {}
+
+
+   
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {

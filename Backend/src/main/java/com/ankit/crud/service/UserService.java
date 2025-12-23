@@ -44,6 +44,10 @@ public class UserService {
         existing.setAge(newUser.getAge());
         existing.setTechStack(newUser.getTechStack());
 
+        if(newUser.getTechKey()!=null){
+            existing.setTechKey(newUser.getTechKey());
+        }
+
         return userRepository.save(existing);
     }
 

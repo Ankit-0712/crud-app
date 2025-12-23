@@ -30,18 +30,22 @@ public class User {
     @Min(value = 1, message = "Age must be least 1")
     private Integer age;
 
-    @NotBlank(message = "Tech Stack is required")
+
     private String techStack;
+
+    @Column(name = "tech_key")
+    private Integer techKey;
 
     public User(){}
 
-    public User(Long id, String name, String email, String phone, Integer age, String techStack){
+    public User(Long id, String name, String email, String phone, Integer age, String techStack, Integer techKey){
         this.id = id;
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.techStack = techStack;
         this.age = age;
+        this.techKey = techKey;
     }
 
 

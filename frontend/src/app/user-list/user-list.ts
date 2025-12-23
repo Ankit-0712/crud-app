@@ -36,18 +36,17 @@ export class UserList implements OnInit {
   }
 
 deleteUser(user: User) {
-  if (user.id === undefined) {
-    console.error('Cannot delete user without an id');
+  if (!confirm("Are you sure you want to delete this user?")) {
     return;
   }
-  this.userService.deleteUser(user.id).subscribe(
-    res => {
-      console.log(res); 
-      this.users = this.users.filter(u => u.id !== user.id);
-    },
-    err => console.error(err)
-  );
+
+  this.userService.deleteUser(user.id!).subscribe(() => {
+    alert("User deleted!");
+    this.users = this.users.filter(u => u.id !== user.id);
+    this.loadUsers();
+  });
 }
+
 
 
 }

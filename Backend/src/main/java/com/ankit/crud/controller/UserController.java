@@ -1,6 +1,8 @@
 package com.ankit.crud.controller;
 
+import com.ankit.crud.model.TechStack;
 import com.ankit.crud.model.User;
+import com.ankit.crud.service.TechStackService;
 import com.ankit.crud.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
@@ -12,15 +14,25 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
     private final UserService userService;
+    private final TechStackService techStackService;
 
-    public UserController(UserService userService){
+    public UserController(UserService userService, TechStackService techStackService){
 
         this.userService = userService;
+        this.techStackService = techStackService;
     }
 
     @GetMapping
     public List<User> getAllUser(){
-        return userService.getAllUsers();
+        List<User> users =  userService.getAllUsers();
+        users.forEach(u -> {
+            if(u.getTechKey() != null){
+                TechStack tech = techStackService.getTechStackById(u.getTechKey());
+                u.setTechStack(tech.getTech_name());
+            }
+        });
+
+        return users;
     }
 
     @GetMapping("/{id}")

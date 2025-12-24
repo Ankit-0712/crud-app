@@ -1,6 +1,8 @@
 package com.ankit.crud.service;
 
+import com.ankit.crud.Repository.TechStackRepository;
 import com.ankit.crud.Repository.UserRepository;
+import com.ankit.crud.model.TechStack;
 import com.ankit.crud.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,9 +14,11 @@ public class UserService {
 
 
     private final UserRepository userRepository;
+    private final TechStackService techStackService;
 
-    public UserService(UserRepository userRepository){
+    public UserService(UserRepository userRepository, TechStackService techStackService){
         this.userRepository = userRepository;
+        this.techStackService = techStackService;
     }
 
     //get all user
@@ -31,6 +35,10 @@ public class UserService {
 
     //create user
     public User createUser(User user){
+        if(user.getTechKey() != null){
+            TechStack tech = techStackService.getTechStackById(user.getTechKey());
+            user.setTechStack(tech.getTech_name());
+        }
         return userRepository.save(user);
     }
 
@@ -42,7 +50,11 @@ public class UserService {
         existing.setEmail(newUser.getEmail());
         existing.setPhone(newUser.getPhone());
         existing.setAge(newUser.getAge());
-        existing.setTechStack(newUser.getTechStack());
+        if(newUser.getTechKey() != null){
+            TechStack tech = techStackService.getTechStackById(newUser.getTechKey());
+            existing.setTechStack(tech.getTech_name());
+            existing.setTechKey(newUser.getTechKey());
+        }
 
         if(newUser.getTechKey()!=null){
             existing.setTechKey(newUser.getTechKey());

@@ -31,7 +31,7 @@ export class UserList implements OnInit {
   }
 
   editUser(id : number){
-    this.router.navigate(['/edit', id]);
+    this.router.navigate(['/master/edit', id]);
     this.cd.detectChanges();
   }
 
@@ -45,6 +45,10 @@ deleteUser(user: User) {
     this.users = this.users.filter(u => u.id !== user.id);
     this.loadUsers();
   });
+}
+
+openReactiveForm(): void {
+  this.router.navigate(['/master/create']);
 }
 
 

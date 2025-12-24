@@ -4,5 +4,6 @@ export interface User{
     email: string,
     phone: string,
     age: number,
-    techStack : string
+    techStack ?: string,
+    tech_key ?: number;
 }

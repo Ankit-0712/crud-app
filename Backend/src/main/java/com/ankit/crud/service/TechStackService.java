@@ -19,6 +19,12 @@ public class TechStackService {
         return techStackRepository.findAll();
     }
 
+    public  TechStack getTechStackById(Integer techKey){
+        return techStackRepository.findById(techKey)
+                .orElseThrow(() -> new RuntimeException("Tech Stack not found"));
+    }
+
+
 
 
 }

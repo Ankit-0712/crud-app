@@ -1,0 +1,52 @@
+<form [formGroup]="userForm" (ngSubmit)="submit()" class="user-form">
+
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" formControlName="name" placeholder="Enter name">
+    <small *ngIf="userForm.get('name')?.touched && userForm.get('name')?.invalid">
+      Name is required
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label>Email</label>
+    <input type="email" formControlName="email" placeholder="Enter email">
+    <small *ngIf="userForm.get('email')?.touched && userForm.get('email')?.invalid">
+      Enter a valid email
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label>Mobile</label>
+    <input type="text" formControlName="phone" placeholder="Enter 10 digit mobile">
+    <small *ngIf="userForm.get('phone')?.touched && userForm.get('phone')?.invalid">
+      Enter 10 digit mobile number
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label>Age</label>
+    <input type="number" formControlName="age" placeholder="Enter age">
+    <small *ngIf="userForm.get('age')?.touched && userForm.get('age')?.invalid">
+      Age must be between 18 and 100
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label>Tech Stack</label>
+    <select formControlName="techKey">
+      <option value="">-- Select Tech Stack --</option>
+      <option *ngFor="let tech of techStacks" [value]="tech.tech_key">
+        {{ tech.tech_name }}
+      </option>
+    </select>
+    <small *ngIf="userForm.get('techKey')?.touched && userForm.get('techKey')?.invalid">
+      Tech Stack is required
+    </small>
+  </div>
+
+  <button type="submit" class="submit-btn">
+    {{ isEditMode ? 'Update User' : 'Create User' }}
+  </button>
+
+</form>

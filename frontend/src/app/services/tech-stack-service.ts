@@ -19,5 +19,9 @@ export class TechStackService {
   return this.http.get<any[]>('http://localhost:8080/techstack');
 }
 
+addTechStack(data : any){
+  return this.http.post(this.apiurl, data);
+}
+
 
 }

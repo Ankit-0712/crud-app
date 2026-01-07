@@ -51,6 +51,9 @@ openReactiveForm(): void {
   this.router.navigate(['/master/create']);
 }
 
+tech(){
+  this.router.navigate(['/tech/create']);
+}
 
 
 }

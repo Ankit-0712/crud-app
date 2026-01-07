@@ -1,0 +1,27 @@
+<form [formGroup]="techForm" (ngSubmit)="submit()" class="tech-form">
+
+  <label for="tech_name">Tech Stack Name</label>
+  <input
+    type="text"
+    id="tech_name"
+    formControlName="tech_name"
+    placeholder="Enter tech stack name"
+    class="input-field"
+  />
+
+  <!-- Validation messages -->
+  <div class="error" *ngIf="techName?.touched && techName?.errors">
+    <div *ngIf="techName?.errors?.['required']">Tech stack is required</div>
+    <div *ngIf="techName?.errors?.['minlength']">At least 2 characters required</div>
+    <div *ngIf="techName?.errors?.['pattern']">Only letters and spaces allowed</div>
+  </div>
+
+  <!-- Duplicate error -->
+  <div class="error" *ngIf="duplicateError">
+    Tech stack already exists!
+  </div>
+
+  <button type="submit" class="submit-btn" [disabled]="techForm.invalid">
+    Submit
+  </button>
+</form>

@@ -34,7 +34,7 @@ export class UserMaster implements OnInit {
     this.initializeForm();
     this.loadTechStacks();
 
-    // Detect edit mode using route param
+    // route param for edit mode detection
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.isEditMode = true;

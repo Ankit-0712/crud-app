@@ -2,10 +2,7 @@ package com.ankit.crud.controller;
 
 import com.ankit.crud.model.TechStack;
 import com.ankit.crud.service.TechStackService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,6 +21,23 @@ public class TechStackController {
     public List<TechStack> getAllTechStack(){
         return techStackService.getAllTechStack();
     }
+
+    @PostMapping
+    public TechStack addTechStack(@RequestBody TechStack techStack){
+        return techStackService.addTechStack(techStack);
+    }
+
+    @DeleteMapping("/{techKey}")
+    public String deleteTechStack(@PathVariable Integer techKey) {
+        techStackService.deleteTechStack(techKey);
+        return "Tech Stack deleted successfully";
+    }
+
+
+
+
+
+
 
 
 
